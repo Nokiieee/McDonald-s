@@ -40,17 +40,22 @@ body {
     font-weight: 800;
 }
 
-#first-menu {
-    margin-top: 20px;
-}
-
 .menu-container {
     display: flex;
     background-color: white;
     margin: 0 5px;
     margin-bottom: 25px;
-    border-left: rgb(255, 21, 21) 5px solid;
+    border-left: rgb(70, 70, 70) 5px solid;
     
+}
+
+.first-menu {
+    margin-top: 20px;
+}
+
+#this {
+    border-left: rgb(255, 21, 21) 5px solid;
+    background-color: rgb(243, 243, 243)
 }
 
 .menu-container:hover {
@@ -60,8 +65,8 @@ body {
 
 .menu {
     text-decoration: none;
-    margin: 8px 0;
-    margin-left: 20px;
+    padding: 8px 0;
+    padding-left: 20px;
     font-family: Poppins;
     font-size: 20px;
     font-weight: 600;
@@ -91,7 +96,7 @@ body {
 
 .top-nav h2 {
     margin: 0;
-    margin-left: 10px;
+    margin-left: 15px;
     color: rgb(255, 85, 55);
     font-family: Poppins;
 }
@@ -101,7 +106,7 @@ body {
 
 .main-body {
     background-color: white;
-    width: 100%;
+    width: auto;
     height: 100%;
     box-shadow: 3px 3px 12px 2px rgb(196, 196, 196) inset;
     padding: 20px;
@@ -128,12 +133,18 @@ body {
     border: red 2px solid;
 }
 
-.food-container img {
+/* .food-container img {
+} */
+
+.text-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
 }
 
 .text-container p{
     font-family: Nunito Sans;
     font-weight: 600;
-    padding: 10px;
+    padding: 10px 15px;
 }
 
