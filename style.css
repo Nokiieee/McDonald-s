@@ -165,6 +165,12 @@ body {
     padding: 0 8px;
 }
 
+.food-container.selected {
+    outline: 2px solid red; /* McDonald's yellow 😉 */
+    border-radius: 8px;
+}
+
+
 .mobile {
     display: none;
 }
