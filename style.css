@@ -7,6 +7,13 @@ body {
     overflow-x: hidden; 
 }
 
+svg {
+    display: flex;
+    align-items: center;
+    fill: rgb(255, 223, 217);
+    cursor: pointer;
+}
+
 .main-container {
     display: flex;
     min-height: 100vh;
@@ -25,6 +32,7 @@ body {
     background-color: white;
     width: 250px;
     position: fixed;
+    z-index: 12;
     height: 100%;
 }
 
@@ -48,7 +56,6 @@ body {
     margin: 0 5px;
     margin-bottom: 25px;
     border-left: rgb(70, 70, 70) 5px solid;
-    
 }
 
 .first-menu {
@@ -130,6 +137,56 @@ body {
     box-shadow: 3px 3px 12px 2px rgb(226, 226, 226) inset;
     padding-top: 20px;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+.food-information {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    height: 100vh;
+    width: 400px;
+    top: 0;
+    right: -100%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 3px 3px 12px 2px rgb(196, 196, 196);
+    transition: .4s ease-in-out;
+    cursor: auto;
+    z-index: 10;
+}
+
+.show-cancel-info {
+    position: fixed;
+    z-index: 8;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    cursor: auto;
+}
+
+.close-info {
+    background-color: red;
+    height: fit-content;
+    z-index: 11;
+    cursor: pointer;
+}
+
+.show-info {
+    right: 0;
+}
+
+.info-container {
+    width: 90%;
+    height: fit-content;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.info {
+    font-family: Poppins;
+    font-weight: 400;
+    margin: 0;
 }
 
 #food {
