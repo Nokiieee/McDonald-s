@@ -397,7 +397,7 @@ svg {
     }
 
     .info-line {
-        margin: 0;
+        display: none;
     }
 
     .breakfast-container {
@@ -502,8 +502,11 @@ svg {
     }
 
     .image-item-container {
-        padding: 0 20px;
-        padding-left: 30px;
+        padding: 20px 10px;
+        box-shadow: 3px 3px 12px 2px rgb(221, 221, 221) inset;
+        border-radius: 5px;
+        margin: 0 15px;
+        margin-top: 10px;
     }
 }
 
@@ -552,16 +555,8 @@ svg {
         font-size: 14px;
     }
 
-    .image-item-container {
-        padding: 0 10px;
-        padding-left: 20px;
-    }
+    
 } 
 
-@media(max-width: 375px) {
-    .image-item-container {
-        padding: 0 5px;
-        padding-left: 10px;
-    }
-}
+
 
