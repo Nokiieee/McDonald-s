@@ -145,6 +145,10 @@ svg {
     cursor: pointer;
 }
 
+.food-container:hover {
+    outline: 2px solid rgba(0, 0, 0, 0.123);
+}
+
 .food-information {
     display: flex;
     justify-content: center;
@@ -171,6 +175,10 @@ svg {
 }
 
 .close-info {
+    position: absolute;
+    left: 5px;
+    top: 5px;
+    border-radius: 3px;
     background-color: red;
     height: fit-content;
     z-index: 11;
@@ -181,17 +189,78 @@ svg {
     right: 0;
 }
 
+.info-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-container {
+    margin-top: 70px;
+}
+
+.item-name {
+    font-family: Poppins;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.795);
+    margin: 10px;
+}
+
 .info-container {
     width: 90%;
     height: fit-content;
     text-align: center;
-    margin-top: 200px;
+    margin-top: 10px;
 }
 
 .info {
     font-family: Poppins;
     font-weight: 400;
     margin: 0;
+    color: rgba(0, 0, 0, 0.795);
+}
+
+.info-line {
+    width: 90%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.116);
+    margin-top: 50px;
+}
+
+.price-container {
+    display: flex;
+    align-items: center;
+    font-family: Poppins;
+    width: 80%;
+    height: 35px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.price {
+    margin-left: auto;
+}
+
+.add-to-cart {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(255, 217, 0);
+    width: 90%;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-to-cart:hover {
+    transition: .3s;
+    background-color: rgb(241, 205, 0);
+}
+
+.add-to-cart h3 {
+    margin: 0;
+    font-family: Poppins;
+    padding: 5px 0;
+    font-weight: 600;
 }
 
 #food {
@@ -228,6 +297,7 @@ svg {
 }
 
 .food-container.selected {
+    transition: .2s;
     outline: 2px solid red; /* McDonald's yellow 😉 */
     border-radius: 8px;
 }
@@ -235,6 +305,25 @@ svg {
 
 .mobile {
     display: none;
+}
+
+@media(max-width: 800px) {
+    .food-information {
+        top: auto; 
+        width: 100%;
+        z-index: 12;
+        right: 0;
+        height: 250px;
+        bottom: -100%;
+    }
+
+    .show-info {
+        bottom: 0;
+    }
+
+    .info-layout {
+        flex-direction: row;
+    }
 }
 
 @media(max-width: 600px) {
