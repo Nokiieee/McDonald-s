@@ -195,8 +195,20 @@ svg {
     align-items: center;
 }
 
+.image-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .image-container {
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 .item-name {
@@ -209,7 +221,7 @@ svg {
 .info-container {
     width: 90%;
     height: fit-content;
-    text-align: center;
+    text-align: start;
     margin-top: 10px;
 }
 
@@ -225,6 +237,13 @@ svg {
     height: 2px;
     background-color: rgba(0, 0, 0, 0.116);
     margin-top: 50px;
+}
+
+.price-add-to-cart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .price-container {
@@ -297,7 +316,7 @@ svg {
 }
 
 .food-container.selected {
-    transition: .2s;
+    transition: .1s;
     outline: 2px solid red; /* McDonald's yellow 😉 */
     border-radius: 8px;
 }
@@ -322,7 +341,45 @@ svg {
     }
 
     .info-layout {
+        height: 100%;
         flex-direction: row;
+        display: flex;
+        align-items: center;
+    }
+
+    .image-info-container {
+        height: 100%;
+        flex-direction: row;
+    }
+
+    .info-line {  
+        width: 4px;
+        height: 80%;
+        margin: 0 15px;
+        margin-top: 0;
+    }
+
+    .image-item-container {
+        display: flex;
+        justify-content: center;
+        height: 50%;
+        padding: 0 40px;
+    }
+
+    .image-container {
+        margin-top: 0;
+    }
+
+    .image-container img {
+        height: 80px;
+    }
+
+    .hotcake-info {
+        display: none;
+    }
+
+    .price-container {
+        margin-top: 0;
     }
 }
 
@@ -337,6 +394,10 @@ svg {
 
     img {
         height: 82px;
+    }
+
+    .info-line {
+        margin: 0;
     }
 
     .breakfast-container {
@@ -367,6 +428,10 @@ svg {
         margin: 10px 0;
         margin-top: 15px;
         margin-left: 5px;
+    }
+
+    .close {
+        fill: rgb(255, 223, 217);
     }
 
     .links-container {
@@ -427,6 +492,19 @@ svg {
     #this-mobile {
         color: rgb(255, 85, 55);
     }
+
+    .info-container {
+        display: none;
+    }
+
+    .info-layout {
+        width: 100%;
+    }
+
+    .image-item-container {
+        padding: 0 20px;
+        padding-left: 30px;
+    }
 }
 
 /* @media(max-width: 533px) {
@@ -463,11 +541,27 @@ svg {
     }
 }
 
-@media(max-width: 370px) {
-    .food-container {
-        flex-grow: 1;
-        max-width: 100%;
-        min-width: 180px;
+*/
+
+@media(max-width: 375px) {
+    .price-container {
+        font-size: 16px;
     }
-} */
+
+    .add-to-cart {
+        font-size: 14px;
+    }
+
+    .image-item-container {
+        padding: 0 10px;
+        padding-left: 20px;
+    }
+} 
+
+@media(max-width: 375px) {
+    .image-item-container {
+        padding: 0 5px;
+        padding-left: 10px;
+    }
+}
 
