@@ -176,8 +176,8 @@ svg {
 
 .close-info {
     position: absolute;
-    left: 5px;
-    top: 5px;
+    left: 10px;
+    top: 10px;
     border-radius: 3px;
     background-color: red;
     height: fit-content;
@@ -327,6 +327,17 @@ svg {
 }
 
 @media(max-width: 800px) {
+    .price-add-to-cart-container {
+        display: flex;
+        justify-content: end;
+        height: 145px;
+    }
+
+    .close-info {
+        right: 10px;
+        left: auto;
+    }
+
     .food-information {
         top: auto; 
         width: 100%;
