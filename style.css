@@ -115,6 +115,20 @@ svg {
     font-family: Poppins;
 }
 
+.top-nav .cart {
+    position: absolute;
+    text-decoration: none;
+    color: rgb(255, 85, 55);
+    font-family: Poppins;
+    font-weight: 500;
+    right: 25px;
+}
+
+.cart svg {
+    height: 30px;
+    fill: rgb(255, 85, 55);
+}
+
 
 /* mainbody */
 
@@ -516,8 +530,12 @@ svg {
         padding: 20px 10px;
         box-shadow: 3px 3px 12px 2px rgb(221, 221, 221) inset;
         border-radius: 5px;
-        margin: 0 15px;
+        margin-left: 15px;
         margin-top: 10px;
+    }
+
+    .item-name {
+        display: none;
     }
 }
 
