@@ -81,6 +81,17 @@
 // ============================================
 
 const foodItems = document.querySelectorAll(".food-container");
+const priceResult = document.querySelector(".price-result");
+let foodPrice = 0;
+
+function calculateTotalPrice() {
+    const cart = getCart();
+    return cart.reduce((total, item) => {
+        return total + (item.price * item.quantity);
+    }, 0);
+}
+
+const totalPrice = calculateTotalPrice();
 
 foodItems.forEach(item => {
     item.addEventListener("click", (e) => {
@@ -128,18 +139,22 @@ foodItems.forEach(item => {
 
 // Food Items Database
 const foodDatabase = {
-    "Hotcakes": { price: 452, image: "images/breakfast/Hotcakes.png" },
-    "Bacon": { price: 512, image: "images/breakfast/baconBuscuit.png", name: "Bacon, Egg & Cheese Biscuit" },
-    "EggMcMuffin": { price: 452, image: "images/breakfast/EggMcMuffin.png", name: "Egg McMuffin" },
-    "SausageMcGriddles": { price: 452, image: "images/breakfast/SausageMcGriddle.png", name: "Sausage McGriddles" },
-    "SausageMcMuffin": { price: 452, image: "images/breakfast/SausageMcMuffin.png", name: "Sausage McMuffin with Egg" },
-    "SausageEgg": { price: 452, image: "images/breakfast/BaconEggNCheeseBagel.png", name: "Sausage, Egg & Cheese Bagel" },
-    "DailyDouble": { price: 452, image: "images/burgers/dailyDouble.jpg", name: "Daily Double" },
-    "McDouble": { price: 452, image: "images/burgers/mcDouble.jpg", name: "McDouble" },
-    "QuarterPounderCheese": { price: 452, image: "images/burgers/quarterPounderCheese.jpg", name: "Quarter Pounder with Cheese" },
-    "BaconQuarterPounder": { price: 452, image: "images/burgers/baconQuarterPounder.jpg", name: "Bacon Quarter Pounder with Cheese" },
-    "BigMac": { price: 452, image: "images/burgers/bigMac.jpg", name: "Big Mac" },
-    "DoubleQuarterPounder": { price: 452, image: "images/burgers/doubleQuarterPounder.jpg", name: "Double Quarter Pounder with Cheese" }
+    "Hotcakes": { price: 188, image: "images/breakfast/Hotcakes.png" },
+    "Bacon": { price: 233, image: "images/breakfast/baconBuscuit.png", name: "Bacon, Egg & Cheese Biscuit" },
+    "EggMcMuffin": { price: 195, image: "images/breakfast/EggMcMuffin.png", name: "Egg McMuffin" },
+    "SausageMcGriddles": { price: 210, image: "images/breakfast/SausageMcGriddle.png", name: "Sausage McGriddles" },
+    "SausageMcMuffin": { price: 250, image: "images/breakfast/SausageMcMuffin.png", name: "Sausage McMuffin with Egg" },
+    "SausageEgg": { price: 200, image: "images/breakfast/BaconEggNCheeseBagel.png", name: "Sausage, Egg & Cheese Bagel" },
+    "DailyDouble": { price: 315, image: "images/burgers/dailyDouble.jpg", name: "Daily Double" },
+    "McDouble": { price: 300, image: "images/burgers/mcDouble.jpg", name: "McDouble" },
+    "QuarterPounderCheese": { price: 320, image: "images/burgers/quarterPounderCheese.jpg", name: "Quarter Pounder with Cheese" },
+    "BaconQuarterPounder": { price: 333, image: "images/burgers/baconQuarterPounder.jpg", name: "Bacon Quarter Pounder with Cheese" },
+    "BigMac": { price: 350, image: "images/burgers/bigMac.jpg", name: "Big Mac" },
+    "DoubleQuarterPounder": { price: 350, image: "images/burgers/doubleQuarterPounder.jpg", name: "Double Quarter Pounder with Cheese" },
+
+    "HamburgerHappyMeal": { price: 480, image: "images/happyMeal/hamburgerHappyMeal.jpg", name: "Hamburger Happpy Meal" },
+    "4PieceMcNuggets": { price: 430, image: "images/happyMeal/4McNuggetsHappyMeal.jpg", name: "4 Piece McNuggets Happy Meal" },
+    "6PieceMcNuggets": { price: 450, image: "images/happyMeal/6mcNuggetsHappyMeal.jpg", name: "6 Piece McNuggets Happy Meal" }
 };
 
 // Get cart from storage or initialize empty cart
@@ -182,6 +197,15 @@ cartButton.forEach(crtBtn => {
             saveCart(cart);
             console.log('Item added to cart:', itemKey);
             console.log('Current cart:', cart);
+
+            console.log(itemData.price)
+            foodPrice += itemData.price;
+            console.log(foodPrice);
+
+            if(priceResult) {
+                 priceResult.innerHTML = `Total Price: ${totalPrice}`;
+            }
+           
         }
     });
 });
@@ -317,6 +341,14 @@ if (window.location.pathname.includes('cart.html')) {
     // Initialize cart page
     renderCart();
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (priceResult) {
+        const totalPrice = calculateTotalPrice();
+        priceResult.innerHTML = `Total Price: ₱${totalPrice}`;
+    }
+});
+
     
 
 
