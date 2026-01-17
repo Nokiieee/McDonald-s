@@ -210,6 +210,8 @@ cartButton.forEach(crtBtn => {
     });
 });
 
+const checkoutContainer = document.querySelector('.checkout-container');
+
 // ============================================
 // CART PAGE (cart.js) - Create separate file
 // ============================================
@@ -294,6 +296,13 @@ if (window.location.pathname.includes('cart.html')) {
         closeInfoDiv.addEventListener('click', () => {
             removeCartItem(item.key);
             container.remove();
+            
+            if (priceResult) {
+                const totalPrice = calculateTotalPrice();
+                priceResult.innerHTML = `Total Price: ₱ ${totalPrice}`;
+            }
+
+            renderCart();
         });
         
         priceCancelDiv.appendChild(priceDiv);
@@ -322,13 +331,19 @@ if (window.location.pathname.includes('cart.html')) {
         
         if (cart.length === 0) {
             const emptyMessage = document.createElement('p');
+            emptyMessage.classList = "empty-cart";
             emptyMessage.textContent = 'Your cart is empty';
             emptyMessage.style.textAlign = 'center';
             emptyMessage.style.marginTop = '50px';
             emptyMessage.style.fontSize = '18px';
             emptyMessage.style.color = '#666';
             cartBody.appendChild(emptyMessage);
+            checkoutContainer.classList.add("checkout-none");
             return;
+
+            
+        } else {
+            checkoutContainer.classList.remove("checkout-none");
         }
         
         // Create cart items
@@ -345,7 +360,7 @@ if (window.location.pathname.includes('cart.html')) {
 document.addEventListener('DOMContentLoaded', () => {
     if (priceResult) {
         const totalPrice = calculateTotalPrice();
-        priceResult.innerHTML = `Total Price: ₱${totalPrice}`;
+        priceResult.innerHTML = `Total Price: ₱ ${totalPrice}`;
     }
 });
 

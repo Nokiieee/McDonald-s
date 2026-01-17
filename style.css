@@ -31,6 +31,7 @@ svg {
      width: 250px;
      flex: 0 0 auto;
      height: 100vh;
+     
 }
 
 .side-nav-fixed {
@@ -39,6 +40,7 @@ svg {
     position: fixed;
     z-index: 12;
     height: 100%;
+    box-shadow: 3px 3px 12px 2px rgb(238, 238, 238);
 }
 
 .mcdo-logo-container {
@@ -104,11 +106,32 @@ svg {
     bottom: 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     width: 100%;
     height: 229px;
-    background-color: rgb(255, 217, 0);
+    background-color: rgb(255, 255, 255);
     box-shadow: 3px 3px 12px 2px rgb(196, 196, 196);
     flex-shrink: 0;
+}
+
+.checkout-none {
+    display: none;
+}
+
+.price-order-container {
+    display: flex;
+    background-color: rgb(255, 217, 0);
+    width: 95%;
+    padding: 50px 0;
+    border-radius: 10px;
+}
+
+.price-result {
+    font-family: Poppins;
+}
+
+.order-container {
+
 }
 
 .top-nav {
@@ -698,6 +721,10 @@ svg {
     fill: white;
     background-color: rgb(255, 85, 55);
     border-radius: 5px;
+}
+
+.empty-cart {
+    font-family: Poppins;
 }
 
 @media(max-width: 900px) {
