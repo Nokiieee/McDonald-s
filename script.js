@@ -364,6 +364,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-    
+// Checkout Container
+
+const cancelOrder = document.querySelector('.cancel-order');
+const confirmCancelOrder = document.querySelector('.confirm-cancel-orders');
+
+cancelOrder.addEventListener('click', () => {
+    confirmCancelOrder.classList.remove('confirm-none');
+});
+
+const confirmNo = document.querySelector('.confirm-no-container');
+
+confirmNo.addEventListener('click', () => {
+    confirmCancelOrder.classList.add('confirm-none');
+});
+
+// Confirm Yes
+
+const confirmYes = document.querySelector('.confirm-yes-container');
+
+confirmYes.addEventListener('click', () => {
+    // 1. Clear cart from localStorage
+    localStorage.removeItem('mcdoCart');
+
+    // 2. Re-render cart UI (cart.html)
+    if (window.location.pathname.includes('cart.html')) {
+        renderCart();
+    }
+
+    // 3. Reset total price display
+    if (priceResult) {
+        priceResult.innerHTML = 'Total Price: ₱ 0';
+    }
+
+    // 4. Hide confirmation modal
+    confirmCancelOrder.classList.add('confirm-none');
+
+    console.log('All cart items removed');
+});
+
 
 

@@ -137,6 +137,7 @@ svg {
     margin: 0 15px;
     border-radius: 10px;
     background-color: white;
+    padding: 0 15px;
     box-shadow: 3px 3px 12px 2px rgb(222, 222, 222) inset;
 }
 
@@ -156,7 +157,7 @@ svg {
     text-align: center;
     background-color: rgb(255, 74, 74);
     /* outline: 2px solid rgba(0, 0, 0, 0.253); */
-    padding: 15px 0;
+    padding: 15px 5px;
     border-radius: 5px;
 }
 
@@ -164,8 +165,96 @@ svg {
     width: 50%;
     text-align: center;
     background-color: rgb(96, 181, 96);
-    padding: 15px 0;
+    padding: 15px 5px;
     border-radius: 5px;
+}
+
+.confirm-cancel-orders {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.215);
+    z-index: 12;
+    box-sizing: border-box;
+}
+
+.confirm-none {
+    display: none;
+}
+
+/* .confirm-cancel-container {
+    display: flex;
+    flex: 1;   
+    max-width: 500px;
+    min-width: 100px;
+    margin: 0 50px;
+    height: 300px;
+    background-color: white;
+    border-radius: 12px;
+} */
+
+.confirm-cancel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    max-width: 600px;
+    min-width: 0; /* IMPORTANT for flex shrinking */
+    
+    margin: 0 auto;          /* centers horizontally */
+    padding: 16px;           /* replaces hard margins */
+    margin: 16px;
+
+    height: auto;            /* allows vertical flexibility */
+    min-height: 150px;       /* optional */
+
+    background-color: white;
+    font-family: Poppins;
+    border-radius: 12px;
+    box-sizing: border-box;  /* prevents overflow */
+}
+
+.confirm-cancel-container h2 {
+    margin: 0;
+}
+
+.confirm-cancel-container .confirm-message {
+    font-weight: 600;
+    text-align: center;
+}
+
+.confirm-no-yes-container {
+    display: flex;
+    margin-top: 5px;
+}
+
+.confirm-no-container, .confirm-yes-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 74, 74);
+    padding: 5px 0;
+    width: 70px;
+    border-radius: 5px;
+    margin: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+}
+
+.confirm-no-container {
+    background-color: rgb(96, 181, 96);
+}
+
+.confirm-no {
+    margin-right: 10px;
 }
 
 .top-nav {
@@ -427,6 +516,12 @@ svg {
 }
 
 @media(max-width: 800px) {
+    .confirm-cancel-container {
+        max-width: 550px;
+        min-height: 140px;
+        font-size: 14px;
+    }
+
     .price-add-to-cart-container {
         display: flex;
         justify-content: end;
@@ -495,6 +590,12 @@ svg {
 }
 
 @media(max-width: 732px) {
+    .confirm-cancel-container {
+        max-width: 450px;
+        min-height: 120px;
+        font-size: 12px;
+    }
+
     .checkout-container {
         height: 180px;
     }
@@ -634,6 +735,12 @@ svg {
 }
 
 @media(max-width: 560px) {
+    .confirm-cancel-container {
+        max-width: 350px;
+        min-height: 100px;
+        font-size: 10px;
+    }
+
     .order-container {
         gap: 12px;
     }
@@ -648,6 +755,12 @@ svg {
 }
 
 @media(max-width: 430px) {
+    .confirm-cancel-container {
+        max-width: 300px;
+        min-height: 80px;
+        font-size: 9px;
+    }
+
     .order-container {
         gap: 10px;
     }
@@ -661,7 +774,7 @@ svg {
     }
 
     .cancel-order, .order {
-        padding: 12px 0;
+        padding: 12px 5px;
     }
 }
 
@@ -686,6 +799,12 @@ svg {
 */
 
 @media(max-width: 375px) {
+    .confirm-cancel-container {
+        max-width: 300px;
+        min-height: 80px;
+        font-size: 8px;
+    }
+
     .order-container {
         gap: 8px;
     }
@@ -707,7 +826,7 @@ svg {
     }
 
     .cancel-order, .order {
-        padding: 10px 0;
+        padding: 10px 5px;
     }
 } 
 
