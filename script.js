@@ -139,22 +139,55 @@ foodItems.forEach(item => {
 
 // Food Items Database
 const foodDatabase = {
-    "Hotcakes": { price: 188, image: "images/breakfast/Hotcakes.png" },
-    "Bacon": { price: 233, image: "images/breakfast/baconBuscuit.png", name: "Bacon, Egg & Cheese Biscuit" },
-    "EggMcMuffin": { price: 195, image: "images/breakfast/EggMcMuffin.png", name: "Egg McMuffin" },
-    "SausageMcGriddles": { price: 210, image: "images/breakfast/SausageMcGriddle.png", name: "Sausage McGriddles" },
-    "SausageMcMuffin": { price: 250, image: "images/breakfast/SausageMcMuffin.png", name: "Sausage McMuffin with Egg" },
-    "SausageEgg": { price: 200, image: "images/breakfast/BaconEggNCheeseBagel.png", name: "Sausage, Egg & Cheese Bagel" },
-    "DailyDouble": { price: 315, image: "images/burgers/dailyDouble.jpg", name: "Daily Double" },
-    "McDouble": { price: 300, image: "images/burgers/mcDouble.jpg", name: "McDouble" },
-    "QuarterPounderCheese": { price: 320, image: "images/burgers/quarterPounderCheese.jpg", name: "Quarter Pounder with Cheese" },
-    "BaconQuarterPounder": { price: 333, image: "images/burgers/baconQuarterPounder.jpg", name: "Bacon Quarter Pounder with Cheese" },
-    "BigMac": { price: 350, image: "images/burgers/bigMac.jpg", name: "Big Mac" },
-    "DoubleQuarterPounder": { price: 350, image: "images/burgers/doubleQuarterPounder.jpg", name: "Double Quarter Pounder with Cheese" },
+    "Hotcakes": { price: 86, image: "images/breakfast/Hotcakes.png" },
+    "Bacon": { price: 130, image: "images/breakfast/baconBuscuit.png", name: "Bacon, Egg & Cheese Biscuit" },
+    "EggMcMuffin": { price: 150, image: "images/breakfast/EggMcMuffin.png", name: "Egg McMuffin" },
+    "SausageMcGriddles": { price: 350, image: "images/breakfast/SausageMcGriddle.png", name: "Sausage McGriddles" },
+    "SausageMcMuffin": { price: 120, image: "images/breakfast/SausageMcMuffin.png", name: "Sausage McMuffin with Egg" },
+    "SausageEgg": { price: 600, image: "images/breakfast/BaconEggNCheeseBagel.png", name: "Sausage, Egg & Cheese Bagel" },
 
-    "HamburgerHappyMeal": { price: 480, image: "images/happyMeal/hamburgerHappyMeal.jpg", name: "Hamburger Happpy Meal" },
-    "4PieceMcNuggets": { price: 430, image: "images/happyMeal/4McNuggetsHappyMeal.jpg", name: "4 Piece McNuggets Happy Meal" },
-    "6PieceMcNuggets": { price: 450, image: "images/happyMeal/6mcNuggetsHappyMeal.jpg", name: "6 Piece McNuggets Happy Meal" }
+    "DailyDouble": { price: 280, image: "images/burgers/dailyDouble.jpg", name: "Daily Double" },
+    "McDouble": { price: 175, image: "images/burgers/mcDouble.jpg", name: "McDouble" },
+    "QuarterPounderCheese": { price: 220, image: "images/burgers/quarterPounderCheese.jpg", name: "Quarter Pounder with Cheese" },
+    "BaconQuarterPounder": { price: 250, image: "images/burgers/baconQuarterPounder.jpg", name: "Bacon Quarter Pounder with Cheese" },
+    "BigMac": { price: 280, image: "images/burgers/bigMac.jpg", name: "Big Mac" },
+    "DoubleQuarterPounder": { price: 330, image: "images/burgers/doubleQuarterPounder.jpg", name: "Double Quarter Pounder with Cheese" },
+
+    "Fries": { price: 80, image: "images/fries/fries.jpg", name: "Fries" },
+    "AppleSlices": { price: 50, image: "images/fries/apple.jpg", name: "Apple Slices" },
+
+    "RanchSnackWrap": { price: 95, image: "images/snack/ranchSnackWrap.jpg", name: "Ranch snack Wrap" },
+    "SpicySnackWrap": { price: 99, image: "images/snack/spicySnackWrap.jpg", name: "Spicy Snack Wrap" },
+
+    "Coca-Cola": { price: 55, image: "images/beverages/coke.jpg", name: "Coca-Cola" },
+    "DrPepper": { price: 55, image: "images/beverages/drPepper.jpg", name: "Dr Pepper" },
+    "Fanta": { price: 55, image: "images/beverages/fanta.jpg", name: "Fanta" },
+    "Lemonade": { price: 65, image: "images/beverages/lemonade.jpg", name: "Lemonade" },
+    "Sprite": { price: 55, image: "images/beverages/sprite.jpg", name: "Sprite" },
+    "FrozenCoca-Cola": { price: 45, image: "images/beverages/frozenCoke.jpg", name: "Frozen Coca-Cola" },
+    "FrozenFantaBlue": { price: 45, image: "images/beverages/frozenFanta.jpg", name: "Frozen Fanta Blue Raspberry" },
+
+    "McFlurry": { price: 65, image: "images/sweets/mcFlurry.jpg", name: "McFlurry with OREO" },
+    "HotFudge": { price: 58, image: "images/sweets/hotFudge.jpg", name: "Hot Fudge Sundae" },
+    "VanillaCone": { price: 22, image: "images/sweets/vanillaCone.jpg", name: "Vanilla Cone" },
+    "ChocolataShake": { price: 75, image: "images/sweets/chocolataShake.jpg", name: "Chocolate Shake" },
+    "StawberryShake": { price: 75, image: "images/sweets/strawberryShake.jpg", name: "Strawberry Shake" },
+    "VanillaShake": { price: 75, image: "images/sweets/vanillaShake.jpg", name: "Vanilla Shake" },
+
+    "HamburgerHappyMeal": { price: 115, image: "images/happyMeal/hamburgerHappyMeal.jpg", name: "Hamburger Happpy Meal" },
+    "4PieceMcNuggets": { price: 125, image: "images/happyMeal/4McNuggetsHappyMeal.jpg", name: "4 Piece McNuggets Happy Meal" },
+    "6PieceMcNuggets": { price: 150, image: "images/happyMeal/6mcNuggetsHappyMeal.jpg", name: "6 Piece McNuggets Happy Meal" },
+
+    "Ranch": { price: 10, image: "images/condiments/ranch.jpg", name: "Ranch" },
+    "Mustard": { price: 10, image: "images/condiments/mustard.jpg", name: "Mustard" },
+    "Mayonaise": { price: 10, image: "images/condiments/mayonaise.jpg", name: "Mayonaise" },
+    "Ketchup": { price: 10, image: "images/condiments/ketchup.jpg", name: "Ketchup" },
+    "HoneyMustard": { price: 10, image: "images/condiments/honeyMustard.jpg", name: "Honey Mustard" },
+    "CreamyChilli": { price: 10, image: "images/condiments/creamyChilli.jpg", name: "Creamy Chilli" },
+    "SpicyBuffalo": { price: 10, image: "images/condiments/spicyBuffalo.jpg", name: "Spicy Buffalo" },
+    "SweetNSour": { price: 10, image: "images/condiments/sweetNSour.jpg", name: "Sweet and Sour" },
+    "TangyBBQ": { price: 10, image: "images/condiments/tangyBBQ.jpg", name: "Tangy BBQ" },
+    "Honey": { price: 10, image: "images/condiments/honey.jpg", name: "Honey" }
 };
 
 // Get cart from storage or initialize empty cart
@@ -360,7 +393,7 @@ if (window.location.pathname.includes('cart.html')) {
 document.addEventListener('DOMContentLoaded', () => {
     if (priceResult) {
         const totalPrice = calculateTotalPrice();
-        priceResult.innerHTML = `Total Price: ₱ ${totalPrice}`;
+        priceResult.innerHTML = `Total Price: ₱${totalPrice}`;
     }
 });
 
