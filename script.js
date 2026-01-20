@@ -493,6 +493,18 @@ foodItems.forEach(item => {
             item.classList.remove("selected");
             cancelOutside.classList.remove("show-cancel-info");
         });
+
+        const cartButton = document.querySelectorAll(".add-to-cart");
+
+        cartButton.forEach(cart => {
+            cart.addEventListener('click', () => {
+                setTimeout(() => {
+                    info.classList.remove("show-info");
+                    item.classList.remove("selected");
+                    cancelOutside.classList.remove("show-cancel-info");
+                }, 400); 
+            });
+        });
     });
 });
 
