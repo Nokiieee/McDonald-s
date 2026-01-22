@@ -474,16 +474,41 @@ foodItems.forEach(item => {
 
         if (info) { 
             info.classList.add("show-info");
+            
+            // Reset quantity to 1 when opening
+            const qtyInput = info.querySelector('.quantity-selector input');
+            if (qtyInput) {
+                qtyInput.value = 1;
+            }
         }
 
         const cancelOutside = item.querySelector(".cancel-info");
         cancelOutside.classList.add("show-cancel-info");
+
+        // Function to reset quantity and price
+        const resetQuantityAndPrice = () => {
+            const qtyInput = item.querySelector('.quantity-selector input');
+            const itemKey = item.dataset.food;
+            const itemData = foodDatabase[itemKey];
+            
+            if (qtyInput) {
+                qtyInput.value = 1;
+            }
+            
+            if (itemData) {
+                const priceDisplay = item.querySelector('.price p');
+                if (priceDisplay) {
+                    priceDisplay.textContent = `₱${itemData.price}`;
+                }
+            }
+        };
 
         cancelOutside.addEventListener('click', (e) => {
             e.stopPropagation();
             info.classList.remove("show-info");
             item.classList.remove("selected");
             cancelOutside.classList.remove("show-cancel-info");
+            resetQuantityAndPrice();
         })
 
         const cancel = item.querySelector(".close-info");
@@ -492,6 +517,7 @@ foodItems.forEach(item => {
             info.classList.remove("show-info");
             item.classList.remove("selected");
             cancelOutside.classList.remove("show-cancel-info");
+            resetQuantityAndPrice();
         });
 
         const cartButton = document.querySelectorAll(".add-to-cart");
@@ -572,60 +598,119 @@ function saveCart(cart) {
     localStorage.setItem('mcdoCart', JSON.stringify(cart));
 }
 
+// Initialize quantity selectors for all food items
+function initializeQuantitySelectors() {
+    const allQuantityContainers = document.querySelectorAll('.quantity-selector');
+    
+    allQuantityContainers.forEach(container => {
+        const minusBtn = container.querySelector('.minus');
+        const plusBtn = container.querySelector('.plus');
+        const qtyInput = container.querySelector('input');
+        
+        // Remove any existing event listeners by cloning
+        const newMinusBtn = minusBtn.cloneNode(true);
+        const newPlusBtn = plusBtn.cloneNode(true);
+        minusBtn.parentNode.replaceChild(newMinusBtn, minusBtn);
+        plusBtn.parentNode.replaceChild(newPlusBtn, plusBtn);
+        
+        // Add event listeners to new buttons
+        newMinusBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const currentValue = parseInt(qtyInput.value);
+            if (currentValue > 1) {
+                qtyInput.value = currentValue - 1;
+                updateDisplayedPrice(container);
+            }
+        });
+        
+        newPlusBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const currentValue = parseInt(qtyInput.value);
+            qtyInput.value = currentValue + 1;
+            updateDisplayedPrice(container);
+        });
+    });
+}
+
+// Update the displayed price based on quantity
+function updateDisplayedPrice(quantityContainer) {
+    const foodContainer = quantityContainer.closest('.food-container');
+    const itemKey = foodContainer.dataset.food;
+    const itemData = foodDatabase[itemKey];
+    
+    if (itemData) {
+        const quantity = parseInt(quantityContainer.querySelector('input').value);
+        const totalItemPrice = itemData.price * quantity;
+        
+        const priceDisplay = foodContainer.querySelector('.price p');
+        if (priceDisplay) {
+            priceDisplay.textContent = `₱${totalItemPrice}`;
+        }
+    }
+}
+
 // Add to Cart Logic with Animation
 const cartButton = document.querySelectorAll(".add-to-cart");
 
 cartButton.forEach(crtBtn => {
     crtBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Prevent triggering parent clicks
+        e.stopPropagation();
         
         const itemKey = crtBtn.dataset.cart;
         const itemData = foodDatabase[itemKey];
         
+        // Get the quantity from the input
+        const foodContainer = crtBtn.closest('.food-container');
+        const qtyInput = foodContainer.querySelector('.quantity-selector input');
+        const quantity = parseInt(qtyInput.value) || 1;
+        
         if (itemData) {
-            // Add animation class
             crtBtn.classList.add('cart-clicked');
             
-            // Change button text temporarily
             const cartButtonText = crtBtn.querySelector('.cart-button');
             const originalText = cartButtonText.textContent;
             cartButtonText.textContent = 'ADDED!';
             
-            // Remove animation after it completes
             setTimeout(() => {
                 crtBtn.classList.remove('cart-clicked');
                 cartButtonText.textContent = originalText;
             }, 600);
             
             const cart = getCart();
-            
-            // Check if item already exists in cart
             const existingItem = cart.find(item => item.key === itemKey);
             
             if (existingItem) {
-                existingItem.quantity += 1;
+                existingItem.quantity += quantity;
             } else {
                 cart.push({
                     key: itemKey,
                     name: itemData.name || itemKey,
                     price: itemData.price,
                     image: itemData.image,
-                    quantity: 1
+                    quantity: quantity
                 });
             }
             
             saveCart(cart);
-            console.log('Item added to cart:', itemKey);
+            console.log('Item added to cart:', itemKey, 'Quantity:', quantity);
             console.log('Current cart:', cart);
 
-            console.log(itemData.price)
-            foodPrice += itemData.price;
-            console.log(foodPrice);
+            foodPrice += (itemData.price * quantity);
+            console.log('Total food price:', foodPrice);
 
             if(priceResult) {
                 const totalPrice = calculateTotalPrice();
                 priceResult.innerHTML = `Total Price: ₱${totalPrice}`;
             }
+            
+            // Reset quantity to 1 and price display after adding to cart
+            setTimeout(() => {
+                qtyInput.value = 1;
+                const priceDisplay = foodContainer.querySelector('.price p');
+                if (priceDisplay) {
+                    priceDisplay.textContent = `₱${itemData.price}`;
+                }
+            }, 600)
         }
     });
 });
@@ -636,7 +721,6 @@ const checkoutContainer = document.querySelector('.checkout-container');
 // CART PAGE (cart.js) - Create separate file
 // ============================================
 
-// This code should run on cart.html page only
 if (window.location.pathname.includes('cart.html')) {
     
     function getCart() {
@@ -649,12 +733,10 @@ if (window.location.pathname.includes('cart.html')) {
     }
     
     function createCartItem(item) {
-        // Create main container
         const container = document.createElement('div');
         container.className = 'c-item-main-container';
         container.dataset.itemKey = item.key;
         
-        // Create image and name section
         const imgNameDiv = document.createElement('div');
         imgNameDiv.className = 'c-img-name';
         
@@ -683,7 +765,6 @@ if (window.location.pathname.includes('cart.html')) {
         imgNameDiv.appendChild(imgContainer);
         imgNameDiv.appendChild(nameQuantityDiv);
         
-        // Create price and cancel section
         const priceCancelDiv = document.createElement('div');
         priceCancelDiv.className = 'c-price-cancel';
         
@@ -691,7 +772,8 @@ if (window.location.pathname.includes('cart.html')) {
         priceDiv.className = 'c-price';
         
         const priceP = document.createElement('p');
-        priceP.textContent = `₱${item.price}`;
+        const totalItemPrice = item.price * item.quantity;
+        priceP.textContent = `₱${totalItemPrice}`;
         
         priceDiv.appendChild(priceP);
         
@@ -712,14 +794,13 @@ if (window.location.pathname.includes('cart.html')) {
         closeSvg.appendChild(path);
         closeInfoDiv.appendChild(closeSvg);
         
-        // Add click event to remove item
         closeInfoDiv.addEventListener('click', () => {
             removeCartItem(item.key);
             container.remove();
             
             if (priceResult) {
                 const totalPrice = calculateTotalPrice();
-                priceResult.innerHTML = `Total Price: ₱ ${totalPrice}`;
+                priceResult.innerHTML = `Total Price: ₱${totalPrice}`;
             }
 
             renderCart();
@@ -728,7 +809,6 @@ if (window.location.pathname.includes('cart.html')) {
         priceCancelDiv.appendChild(priceDiv);
         priceCancelDiv.appendChild(closeInfoDiv);
         
-        // Append all sections to main container
         container.appendChild(imgNameDiv);
         container.appendChild(priceCancelDiv);
         
@@ -746,7 +826,6 @@ if (window.location.pathname.includes('cart.html')) {
         const cart = getCart();
         const cartBody = document.querySelector('.c-main-body');
         
-        // Clear existing items (remove the static examples)
         cartBody.innerHTML = '';
         
         if (cart.length === 0) {
@@ -764,14 +843,12 @@ if (window.location.pathname.includes('cart.html')) {
             checkoutContainer.classList.remove("checkout-none");
         }
         
-        // Create cart items
         cart.forEach(item => {
             const cartItem = createCartItem(item);
             cartBody.appendChild(cartItem);
         });
     }
     
-    // Initialize cart page
     renderCart();
 }
 
@@ -780,6 +857,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalPrice = calculateTotalPrice();
         priceResult.innerHTML = `Total Price: ₱${totalPrice}`;
     }
+    
+    // Initialize quantity selectors after DOM is loaded
+    initializeQuantitySelectors();
 });
 
 // Checkout Container
@@ -800,28 +880,22 @@ if (confirmNo && confirmCancelOrder) {
     });
 }
 
-// Confirm Yes
 const confirmYes = document.querySelector('.confirm-yes-container');
 
 if (confirmYes && confirmCancelOrder) {
     confirmYes.addEventListener('click', () => {
-        // 1. Clear cart from localStorage
         localStorage.removeItem('mcdoCart');
 
-        // 2. Re-render cart UI (cart.html)
         if (window.location.pathname.includes('cart.html')) {
             renderCart();
         }
 
-        // 3. Reset total price display
         if (priceResult) {
-            priceResult.innerHTML = 'Total Price: ₱ 0';
+            priceResult.innerHTML = 'Total Price: ₱0';
         }
 
-        // 4. Hide confirmation modal
         confirmCancelOrder.classList.add('confirm-none');
 
         console.log('All cart items removed');
     });
 }
-
