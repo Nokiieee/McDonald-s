@@ -452,6 +452,60 @@ function calculateTotalPrice() {
 
 const totalPrice = calculateTotalPrice();
 
+// Checkout Modal Logic
+const orderButton = document.querySelector('.order');
+const checkoutModal = document.querySelector('.confirm-checkout-modal');
+const checkoutTotalPrice = document.querySelector('.checkout-total-price');
+const checkoutCancelBtn = document.querySelector('.checkout-cancel-btn');
+const checkoutConfirmBtn = document.querySelector('.checkout-confirm-btn');
+const successPopup = document.querySelector('.success-popup');
+
+if (orderButton && checkoutModal) {
+    orderButton.addEventListener('click', () => {
+        const totalPrice = calculateTotalPrice();
+        checkoutTotalPrice.textContent = `Total Price: ₱${totalPrice}`;
+        checkoutModal.classList.remove('confirm-none');
+    });
+}
+
+if (checkoutCancelBtn && checkoutModal) {
+    checkoutCancelBtn.addEventListener('click', () => {
+        checkoutModal.classList.add('confirm-none');
+    });
+}
+
+if (checkoutConfirmBtn && checkoutModal && successPopup) {
+    checkoutConfirmBtn.addEventListener('click', () => {
+        // Download cart as Excel file FIRST
+        downloadCartAsExcel();
+
+        // Hide checkout modal
+        checkoutModal.classList.add('confirm-none');
+        
+        // Show success popup
+        successPopup.classList.remove('confirm-none');
+        
+        // Clear cart and hide success popup after 2 seconds
+        setTimeout(() => {
+            // Hide success popup FIRST
+            successPopup.classList.add('confirm-none');
+            
+            // Then clear cart and update UI
+            localStorage.removeItem('mcdoCart');
+            
+            if (window.location.pathname.includes('cart.html')) {
+                renderCart();
+            }
+            
+            if (priceResult) {
+                priceResult.innerHTML = 'Total Price: ₱0';
+            }
+            
+            console.log('Order completed, cart cleared');
+        }, 2000);
+    });
+}
+
 foodItems.forEach(item => {
     item.addEventListener("click", (e) => {
         // Remove red outline from ALL items
@@ -898,4 +952,40 @@ if (confirmYes && confirmCancelOrder) {
 
         console.log('All cart items removed');
     });
+}
+
+// Function to download cart as Excel file
+function downloadCartAsExcel() {
+    const cart = getCart();
+    
+    if (cart.length === 0) {
+        alert('Your cart is empty!');
+        return;
+    }
+    
+    // Create CSV content (Excel can open CSV files)
+    let csvContent = "Item Name,Quantity,Unit Price,Total Price\n";
+    
+    let grandTotal = 0;
+    cart.forEach(item => {
+        const totalPrice = item.price * item.quantity;
+        grandTotal += totalPrice;
+        csvContent += `"${item.name}",${item.quantity},₱${item.price},₱${totalPrice}\n`;
+    });
+    
+    csvContent += `\nGrand Total,,,₱${grandTotal}`;
+    
+    // Create blob and download
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+    const link = document.createElement('a');
+    
+    if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', `McDonald_Order_${new Date().toISOString().slice(0,10)}.csv`);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 }

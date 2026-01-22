@@ -175,6 +175,7 @@
         </div>
     </div>
 
+    <!-- Cancel Order Confirmation Modal -->
     <div class="confirm-cancel-orders confirm-none">
         <div class="confirm-cancel-container">
             <h2 class="confirm-message">Are you sure you want to cancel your orders?</h2>
@@ -190,5 +191,37 @@
             </div>
         </div>
     </div>
+
+    <!-- Checkout Confirmation Modal -->
+    <div class="confirm-checkout-modal confirm-none">
+        <div class="confirm-cancel-container">
+            <h2 class="confirm-message checkout-total-price">Total Price: ₱0</h2>
+
+            <div class="confirm-no-yes-container">
+                <div class="confirm-no-container checkout-cancel-btn">
+                    <h2 class="confirm-no">Cancel</h2>
+                </div>
+                
+                <div class="confirm-yes-container checkout-confirm-btn">
+                    <h2 class="confirm-yes">Confirm</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Pop-up -->
+    <div class="success-popup confirm-none">
+        <div class="success-container">
+            <div class="success-checkmark">
+                <svg xmlns="http://www.w3.org/2000/svg" height="80px" viewBox="0 -960 960 960" width="80px" fill="#28a745">
+                    <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z"/>
+                </svg>
+            </div>
+            <h2 class="success-message">Order Placed Successfully!</h2>
+            <p class="success-submessage">Thank you for your order</p>
+        </div>
+    </div>
+
+    <div class="confirm-orders"></div>
 </body>
 </html>
