@@ -536,7 +536,7 @@ svg {
 .quantity-selector {
   display: flex;
   width: fit-content;
-  border: 2px solid #ddd;
+  border: 1.5px solid #ddd;
   border-radius: 4px;
   overflow: hidden;
   height: auto;
@@ -544,12 +544,13 @@ svg {
 }
 
 .qty-btn {
-  width: 18px;          /* Reduced from 50px */
+  width: 30px;          /* Reduced from 50px */
   border: none;
   background-color: #f5f5f5;
-  font-size: 9px;      /* Reduced from 24px */
+  font-size: 12px;      /* Reduced from 24px */
   cursor: pointer;
   transition: background-color 0.2s;
+  padding: 7px;
 }
 
 .qty-btn:hover {
@@ -565,11 +566,11 @@ svg {
   justify-content: center;
   align-items: center;
   text-align: center;
-  width: 23px;          /* Reduced from 60px */
+  width: 25px;          /* Reduced from 60px */
   border: none;
-  border-left: 2px solid #ddd;
-  border-right: 2px solid #ddd;
-  font-size: 9px;      /* Reduced from 20px */
+  border-left: 1.5px solid #ddd;
+  border-right: 1.5px solid #ddd;
+  font-size: 10px;      /* Reduced from 20px */
   font-family: Poppins;
   -moz-appearance: textfield;
 }
@@ -590,6 +591,20 @@ svg {
         display: flex;
         justify-content: end;
         height: 145px;
+        background-color: white;
+        padding: 0 10px;
+        width: 100%;
+    }
+
+    .quantity-selector-container {
+        display: flex;
+        justify-content: end;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .quantity {
+        margin: 0;
     }
 
     .close-info {
@@ -650,6 +665,11 @@ svg {
 
     .price-container {
         margin-top: 0;
+        width: 100%;
+    }
+
+    .price {
+        margin-right: 30px;
     }
 }
 
