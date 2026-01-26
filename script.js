@@ -443,6 +443,20 @@ const foodItems = document.querySelectorAll(".food-container");
 const priceResult = document.querySelector(".price-result");
 let foodPrice = 0;
 
+// to prevent the website to be scrolled when the links-container is open
+
+const sidebarCheckbox = document.getElementById('sidebar-active');
+
+sidebarCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+});
+
+// ----------------------------------------------------------------------
+
 function calculateTotalPrice() {
     const cart = getCart();
     return cart.reduce((total, item) => {
@@ -492,6 +506,9 @@ if (checkoutConfirmBtn && checkoutModal && successPopup) {
             
             // Then clear cart and update UI
             localStorage.removeItem('mcdoCart');
+
+            // RESET KIOSK SESSION
+            localStorage.removeItem('mcdoTapped');
             
             if (window.location.pathname.includes('cart.html')) {
                 renderCart();
@@ -500,8 +517,9 @@ if (checkoutConfirmBtn && checkoutModal && successPopup) {
             if (priceResult) {
                 priceResult.innerHTML = 'Total Price: ₱0';
             }
-            
+
             console.log('Order completed, cart cleared');
+            window.location.href = "index.html";
         }, 2000);
     });
 }
@@ -989,3 +1007,25 @@ function downloadCartAsExcel() {
         document.body.removeChild(link);
     }
 }
+
+const kioskModal = document.getElementById("kioskModal");
+
+// Check if user already tapped to order
+if (localStorage.getItem("mcdoTapped")) {
+    kioskModal.style.display = "none";
+}
+
+// When user taps the kiosk screen
+kioskModal.addEventListener("click", () => {
+    localStorage.setItem("mcdoTapped", "true");
+
+    kioskModal.classList.add("hidden");
+
+    setTimeout(() => {
+        kioskModal.style.display = "none";
+    }, 80);
+});
+
+// localStorage.removeItem('mcdoTapped');
+
+

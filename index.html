@@ -8,6 +8,15 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Tap to Order Modal -->
+    <div class="kiosk-modal" id="kioskModal">
+        <div class="kiosk-content">
+            <img src="images/mcdo-logo.png" alt="McDonald's Logo" class="kiosk-logo">
+            <h1 class="kiosk-text">Tap Here to Order</h1>
+        </div>
+    </div>
+
+
     <div class="main-container">
         <div class="side-nav">
             <div class="side-nav-fixed">
@@ -65,19 +74,19 @@
 
                         <a id="this-mobile" class="menu" href="index.html">Breakfast</a>
                         <div class="line-parent"><div class="line"></div></div>
-                        <a class="menu" href="burgers.html">Burgers</a>
+                        <a class="menu menu-hover" href="burgers.html">Burgers</a>
                         <div class="line-parent"><div class="line"></div></div>
-                        <a class="menu" href="fries.html">Fries & Sides</a>
+                        <a class="menu menu-hover" href="fries.html">Fries & Sides</a>
                         <div class="line-parent"><div class="line"></div></div>
-                        <a class="menu" href="snack.html">Snack Wrap</a>
+                        <a class="menu menu-hover" href="snack.html">Snack Wrap</a>
                         <div class="line-parent"><div class="line"></div></div>
-                        <a class="menu" href="beverages.html">Beverages</a>
+                        <a class="menu menu-hover" href="beverages.html">Beverages</a>
                         <div class="line-parent"><div class="line"></div></div>
-                        <a class="menu" href="sweets.html">Sweets & Treats</a>
+                        <a class="menu menu-hover" href="sweets.html">Sweets & Treats</a>
                         <div class="line-parent"><div class="line"></div></div>
-                        <a class="menu" href="happyMeal.html">Happy Meal</a>
+                        <a class="menu menu-hover" href="happyMeal.html">Happy Meal</a>
                         <div class="line-parent"><div class="line"></div></div>
-                        <a class="menu" href="condiments.html">Condiments</a>
+                        <a class="menu menu-hover" href="condiments.html">Condiments</a>
                         <div class="line-parent"><div class="line"></div></div>
                     </div>
                 </div>
@@ -97,6 +106,10 @@
 
                         <div class="text-container">
                             <p>Hotcakes</p>
+                        </div>
+                        
+                        <div class="menu-price">
+                            <p>₱86</p>
                         </div>
 
                         <div class="food-information"> <!-- put the info inside this and you'll be ok -->
@@ -157,6 +170,10 @@
                             <p>Bacon, Egg & Cheese Biscuit</p>
                         </div>
 
+                        <div class="menu-price">
+                            <p>₱130</p>
+                        </div>
+
                         <div class="food-information"> <!-- put the info inside this and you'll be ok -->
                             <div class="close-info">
                                 <svg class="close" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
@@ -173,7 +190,7 @@
                                     </div>
 
                                     <div class="info-container">
-                                        <h4 class="info">If you love hot pancakes, you've got to try McDonald's Hotcakes with a side of real butter and sweet maple flavored Hotcake syrup. <span class="hotcake-info">This McDonald's breakfast comes with 3 golden brown Hotcakes. There are 580 calories in McDonald's Hotcakes. Order them with a Premium Roast Coffee for the perfect breakfast combo.</span></h4>
+                                        <h4 class="info">Start your morning with a delicious Bacon, Egg & Cheese Biscuit breakfast sandwich from the McDonald's breakfast menu! <span class="hotcake-info">The McDonald’s Bacon, Egg & Cheese Biscuit recipe features a warm buttermilk biscuit brushed with real butter, thick-cut Applewood smoked bacon, a fluffy folded egg, and a slice of melty American cheese.</span></h4>
                                     </div>
                                 </div>
 
@@ -215,6 +232,10 @@
                             <p>Egg McMuffin</p>
                         </div>
 
+                        <div class="menu-price">
+                            <p>₱150</p>
+                        </div>
+
                         <div class="food-information"> <!-- put the info inside this and you'll be ok -->
                             <div class="close-info">
                                 <svg class="close" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
@@ -231,7 +252,7 @@
                                     </div>
 
                                     <div class="info-container">
-                                        <h4 class="info">If you love hot pancakes, you've got to try McDonald's Hotcakes with a side of real butter and sweet maple flavored Hotcake syrup. <span class="hotcake-info">This McDonald's breakfast comes with 3 golden brown Hotcakes. There are 580 calories in McDonald's Hotcakes. Order them with a Premium Roast Coffee for the perfect breakfast combo.</span></h4>
+                                        <h4 class="info">Satisfy your McDonald's breakfast cravings with our Egg McMuffin® breakfast sandwich—it’s an excellent source of protein and oh so delicious. <span class="hotcake-info">McDonald's Egg McMuffin® recipe features a freshly cracked Grade A egg placed on a toasted English Muffin topped with real butter, lean Canadian bacon, and melty American cheese. There are 310 calories in an Egg McMuffin® from McDonald’s.</span></h4>
                                     </div>
                                 </div>
 
@@ -273,6 +294,10 @@
                             <p>Sausage McGriddles</p>
                         </div>
 
+                        <div class="menu-price">
+                            <p>₱350</p>
+                        </div>
+
                         <div class="food-information"> <!-- put the info inside this and you'll be ok -->
                             <div class="close-info">
                                 <svg class="close" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
@@ -289,7 +314,7 @@
                                     </div>
 
                                     <div class="info-container">
-                                        <h4 class="info">If you love hot pancakes, you've got to try McDonald's Hotcakes with a side of real butter and sweet maple flavored Hotcake syrup. <span class="hotcake-info">This McDonald's breakfast comes with 3 golden brown Hotcakes. There are 580 calories in McDonald's Hotcakes. Order them with a Premium Roast Coffee for the perfect breakfast combo.</span></h4>
+                                        <h4 class="info">McDonald’s Sausage McGriddles® is the perfect sausage breakfast sandwich to start the day! <span class="hotcake-info">Our Sausage McGriddles recipe features soft, warm griddle cakes—with the taste of sweet maple—that hold our savory, sizzling hot sausage. McGriddles cakes have no artificial preservatives or flavors and no colors from artificial sources.</span></h4>
                                     </div>
                                 </div>
 
@@ -331,6 +356,10 @@
                             <p>Sausage McMuffin with Egg</p>
                         </div>
 
+                        <div class="menu-price">
+                            <p>₱120</p>
+                        </div>
+
                         <div class="food-information"> <!-- put the info inside this and you'll be ok -->
                             <div class="close-info">
                                 <svg class="close" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
@@ -347,7 +376,7 @@
                                     </div>
 
                                     <div class="info-container">
-                                        <h4 class="info">If you love hot pancakes, you've got to try McDonald's Hotcakes with a side of real butter and sweet maple flavored Hotcake syrup. <span class="hotcake-info">This McDonald's breakfast comes with 3 golden brown Hotcakes. There are 580 calories in McDonald's Hotcakes. Order them with a Premium Roast Coffee for the perfect breakfast combo.</span></h4>
+                                        <h4 class="info">Start your day off with a McDonald’s Sausage McMuffin with Egg breakfast sandwich. <span class="hotcake-info">Our Sausage Egg McMuffin recipe features a savory hot sausage, a slice of melty American cheese and a delicious, freshly cracked egg all on a freshly toasted English muffin. There are 480 calories in Sausage McMuffin with Egg at McDonald's.</span></h4>
                                     </div>
                                 </div>
 
@@ -389,6 +418,10 @@
                             <p>Sausage, Egg & Cheese Bagel</p>
                         </div>
 
+                        <div class="menu-price">
+                            <p>₱600</p>
+                        </div>
+
                         <div class="food-information"> <!-- put the info inside this and you'll be ok -->
                             <div class="close-info">
                                 <svg class="close" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 -960 960 960" width="32px" fill="#5f6368"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
@@ -405,7 +438,7 @@
                                     </div>
 
                                     <div class="info-container">
-                                        <h4 class="info">If you love hot pancakes, you've got to try McDonald's Hotcakes with a side of real butter and sweet maple flavored Hotcake syrup. <span class="hotcake-info">This McDonald's breakfast comes with 3 golden brown Hotcakes. There are 580 calories in McDonald's Hotcakes. Order them with a Premium Roast Coffee for the perfect breakfast combo.</span></h4>
+                                        <h4 class="info">Craving a breakfast sandwich at McDonald's? It features a toasted bagel with butter, a fluffy folded egg, creamy breakfast sauce and two slices of melty American cheese. <span class="hotcake-info">There are 590 calories in a McDonald’s Bacon, Egg and Cheese Bagel. </span></h4>
                                     </div>
                                 </div>
 
