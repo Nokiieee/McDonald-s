@@ -161,12 +161,22 @@ svg {
     border-radius: 5px;
 }
 
+.cancel-order:hover {
+    transition: .2s;
+    background-color: rgb(236, 67, 67);
+}
+
 .order {
     width: 50%;
     text-align: center;
     background-color: rgb(96, 181, 96);
     padding: 15px 5px;
     border-radius: 5px;
+}
+
+.order:hover {
+    transition: .2s;
+    background-color: rgb(88, 167, 88);
 }
 
 .confirm-cancel-orders {
@@ -253,12 +263,22 @@ svg {
     background-color: rgb(96, 181, 96);
 }
 
+.confirm-yes-container:hover {
+    transition: .2s;
+    background-color: rgb(87, 163, 87);
+}
+
+.confirm-no-container:hover {
+    transition: .2s;
+    background-color: rgb(238, 69, 69);
+}
+
 .confirm-container, .cancel-container {
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: rgb(255, 74, 74);
-    padding: 5px 5px;
+    padding: 5px 10px;
     border-radius: 5px;
     margin: 10px;
     text-align: center;
@@ -268,6 +288,16 @@ svg {
 
 .confirm-container {
     background-color: rgb(96, 181, 96);
+}
+
+.confirm-container:hover {
+    transition: .2s;
+    background-color: rgb(88, 168, 88);
+}
+
+.cancel-container:hover {
+    transition: .2s;
+    background-color: rgb(240, 68, 68);
 }
 
 .confirm-no {
