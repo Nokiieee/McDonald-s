@@ -1,2 +1,3 @@
-guide.css
-guide.html
+node_modules
+dist
+.env
