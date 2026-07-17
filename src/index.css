@@ -1002,16 +1002,6 @@ a:focus-visible,
     font-size: 38px;
   }
 
-  .price-add-to-cart-container {
-    display: flex;
-    justify-content: center;
-    height: auto;
-    background-color: white;
-    padding: 10px;
-    width: 100%;
-    margin-top: 0;
-  }
-
   .add-to-cart-btn {
     min-width: 0;
   }
@@ -1051,6 +1041,9 @@ a:focus-visible,
   .image-info-container {
     height: 100%;
     flex-direction: row;
+    justify-content: center;
+    width: 33%;
+    flex-shrink: 0;
     min-width: 0;
   }
 
@@ -1063,6 +1056,13 @@ a:focus-visible,
   }
 
   .price-add-to-cart-container {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    background-color: white;
+    padding: 10px;
+    width: 67%;
+    margin-top: 0;
     min-width: 0;
   }
 
@@ -1070,8 +1070,9 @@ a:focus-visible,
     display: flex;
     justify-content: center;
     height: 50%;
-    padding: 0 20px;
+    padding: 0 12px;
     min-width: 0;
+    max-width: 100%;
   }
 
   .image-container {
@@ -1079,7 +1080,14 @@ a:focus-visible,
   }
 
   .image-container img {
-    height: 80px;
+    height: 100px;
+  }
+
+  /* The name is redundant here — the guest already knows which item they
+     tapped, and hiding it keeps the full image-item-container height
+     budget free for the (now larger) photo instead of squeezing both in. */
+  .item-name {
+    display: none;
   }
 
   .hotcake-info {
@@ -1132,44 +1140,80 @@ a:focus-visible,
     display: none;
   }
 
-  /* Below tablet width there's no longer room for the image, the quantity
-     selector, and the Add to Cart button to share one row without either
-     shrinking below their content's minimum size or overflowing past the
-     screen edge. Stack them instead so nothing has to compete for width. */
-  .food-information {
-    height: auto;
-    max-height: 85vh;
-  }
-
   .info-layout {
     width: 100%;
-    flex-direction: column;
-  }
-
-  .image-info-container {
-    flex-direction: column;
-    height: auto;
   }
 
   .image-item-container {
-    padding: 20px 10px;
+    padding: 12px 8px;
     box-shadow: 3px 3px 12px 2px rgb(221, 221, 221) inset;
     border-radius: 5px;
-    margin: 10px 0;
-    height: auto;
-  }
-
-  .item-name {
-    display: none;
-  }
-
-  .price-add-to-cart-container {
-    padding-bottom: 8px;
+    margin: 0 8px;
   }
 
   .add-to-cart-btn {
     width: 100%;
     margin-top: 10px;
+  }
+}
+
+/* Image left, quantity selector + Add to Cart button right — the row layout
+   is kept at every width, but the image and controls get progressively more
+   compact so the right-hand column never needs more width than the screen
+   actually has left over after the image. */
+@media (max-width: 480px) {
+  .image-container img {
+    height: 80px;
+  }
+
+  .qty-btn {
+    width: 28px;
+    padding: 5px;
+  }
+
+  .quantity-selector input[type='number'] {
+    width: 26px;
+  }
+
+  .add-to-cart-btn-icon {
+    padding: 10px 4px 10px 12px;
+  }
+
+  .add-to-cart-btn-label {
+    padding: 10px 6px;
+    font-size: 13px;
+  }
+
+  .add-to-cart-btn-price {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 375px) {
+  .image-item-container {
+    padding: 8px 6px;
+    margin: 0 6px;
+  }
+
+  .image-container img {
+    height: 65px;
+  }
+
+  /* The label text no longer fits next to the icon and the price at this
+     width. Drop it and keep the icon + live price — still a clear,
+     functional button, just a more compact one. */
+  .add-to-cart-btn-label {
+    display: none;
+  }
+
+  .add-to-cart-btn-icon {
+    padding: 10px 8px 10px 16px;
+  }
+
+  .add-to-cart-btn-price {
+    flex: 1;
+    justify-content: center;
   }
 }
 
