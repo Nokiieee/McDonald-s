@@ -312,6 +312,10 @@ svg {
   margin-top: 50px;
 }
 
+.image-container img {
+  max-width: 100%;
+}
+
 .item-name {
   font-family: Poppins, sans-serif;
   font-weight: 600;
@@ -446,7 +450,6 @@ svg {
   font-weight: 600;
   font-size: 15px;
   color: rgb(70, 50, 0);
-  white-space: nowrap;
 }
 
 .add-to-cart-btn-price {
@@ -1009,6 +1012,10 @@ a:focus-visible,
     margin-top: 0;
   }
 
+  .add-to-cart-btn {
+    min-width: 0;
+  }
+
   .quantity-selector-container {
     width: 100%;
     margin-top: 0;
@@ -1044,6 +1051,7 @@ a:focus-visible,
   .image-info-container {
     height: 100%;
     flex-direction: row;
+    min-width: 0;
   }
 
   .info-line {
@@ -1051,6 +1059,11 @@ a:focus-visible,
     height: 80%;
     margin: 0 15px;
     margin-top: 0;
+    flex-shrink: 0;
+  }
+
+  .price-add-to-cart-container {
+    min-width: 0;
   }
 
   .image-item-container {
@@ -1058,6 +1071,7 @@ a:focus-visible,
     justify-content: center;
     height: 50%;
     padding: 0 20px;
+    min-width: 0;
   }
 
   .image-container {
@@ -1118,20 +1132,39 @@ a:focus-visible,
     display: none;
   }
 
+  /* Below tablet width there's no longer room for the image, the quantity
+     selector, and the Add to Cart button to share one row without either
+     shrinking below their content's minimum size or overflowing past the
+     screen edge. Stack them instead so nothing has to compete for width. */
+  .food-information {
+    height: auto;
+    max-height: 85vh;
+  }
+
   .info-layout {
     width: 100%;
+    flex-direction: column;
+  }
+
+  .image-info-container {
+    flex-direction: column;
+    height: auto;
   }
 
   .image-item-container {
     padding: 20px 10px;
     box-shadow: 3px 3px 12px 2px rgb(221, 221, 221) inset;
     border-radius: 5px;
-    margin-left: 15px;
-    margin-top: 10px;
+    margin: 10px 0;
+    height: auto;
   }
 
   .item-name {
     display: none;
+  }
+
+  .price-add-to-cart-container {
+    padding-bottom: 8px;
   }
 
   .add-to-cart-btn {
@@ -1252,12 +1285,6 @@ a:focus-visible,
 
   .c-name-quantity p {
     font-size: 8px;
-  }
-}
-
-@media (max-width: 360px) {
-  .quantity {
-    display: none;
   }
 }
 
